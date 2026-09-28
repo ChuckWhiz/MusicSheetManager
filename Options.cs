@@ -20,6 +20,11 @@ class Options
 
         do
         {
+            // For some reason, I keep getting a very odd bug where if I run this once, it will print the stuff and 
+            // if I run it again, it will print the new stuff but show the previous stuff behind it. This will be 
+            // fixed soon once I find out what in the heck is causing this to happen (maybe it's just a prob with my
+            // setup and the code itself is fine but idk).
+
             Console.Write("Please select one of the above options: ");
             option = Console.ReadLine();
 
@@ -75,8 +80,6 @@ class Options
                     Console.WriteLine("\nPress any key to continue.");
                     Console.ReadKey();
                     break;
-                case "6":
-                    break;
                 default:
                     Console.WriteLine("Invalid option. Please enter a valid option.");
                     break;
@@ -120,21 +123,21 @@ class Options
 
         // This if-else statement displays the file size of the current file. Depending on
         // the file size, it will display in bytes, megabytes, or gigabytes (technically, it's KiB, 
-        // MiB, and GiB but these units are read as KB, MB, and GB anyway).
+        // MiB, and GiB but these units are read as KB, MB, and GB in most cases anyway).
         
-        if (song.FileSize < kilobyteThreshold)   // Bytes, just... bytes.
+        if (song.FileSize < kilobyteThreshold)                                              // Bytes, just... bytes.
             return $"{song.FileSize:F2} B";
 
-        else if (song.FileSize >= kilobyteThreshold && song.FileSize < megabyteThreshold)     // Bytes to kilobytes
+        else if (song.FileSize >= kilobyteThreshold && song.FileSize < megabyteThreshold)   // Bytes to kilobytes
             return $"{song.FileSize / kilobyteThreshold:F2} KB";
 
-        else if (song.FileSize >= megabyteThreshold && song.FileSize < gigabyteThreshold)     // Bytes to megabytes
+        else if (song.FileSize >= megabyteThreshold && song.FileSize < gigabyteThreshold)   // Bytes to megabytes
             return $"{song.FileSize / (kilobyteThreshold * kilobyteThreshold):F2} MB";
 
-        else if (song.FileSize >= gigabyteThreshold)   // Bytes to gigabytes (highly unnecessary in this program's case but whatever)
+        else if (song.FileSize >= gigabyteThreshold)                                        // Bytes to gigabytes (highly unnecessary in this program's case but whatever)
             return $"{song.FileSize / (kilobyteThreshold * kilobyteThreshold * kilobyteThreshold):F2} GB";
 
         else
-            return "error";
+            return "Either your file is corrupted or some crap, or you got one MASSIVE file. If it's the latter, then you've brought your data hoard to the wrong place bro.";
     }
 }

@@ -123,7 +123,6 @@ class Initialization
         Settings settings = new Settings();
         {
             settings.Directory = folderPath;
-            //settings.SheetListDirectory = sheetListPath;
         }
 
 
